@@ -28,11 +28,21 @@ class Controller extends BaseController
     {
         try {
             DB::beginTransaction();
-            $params['class']::find($params['id']);
-            $params['class']->update([
-                'name' => $request->kategori,
-                'description' => $request->description
-            ]);
+            $data = $params['class']::find($params['id']);
+            $data->update($params['request']);
+            DB::commit();
+            return $params['message'];
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return array('error' => $th->getMessage());
+        }
+    }
+
+    public function bindDelete($params)
+    {
+        try {
+            DB::beginTransaction();
+            $params['data']->delete();
             DB::commit();
             return $params['message'];
         } catch (\Throwable $th) {
