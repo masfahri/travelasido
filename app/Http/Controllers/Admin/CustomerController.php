@@ -108,7 +108,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = $this->bindUpdate(array(
+            'id'    => $id,
+            'request' => $request->except('_token'),
+            'class' => CustomersModel::class,
+            'message' => array('success' => $this->initialPage.': <strong>' . $request->email . '</strong> Diubah'),
+        ));
+        return redirect()->back()->with($update);
     }
 
     /**
@@ -119,7 +125,12 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        CustomersModel::findOrFail($id)->delete();
-        return redirect()->back()->with(['success' => 'Berhasil Hapus']);
+        $data = CustomersModel::find($id);
+        $this->bindDelete(array(
+            'id' => $id,
+            'data' => $data,
+            'message' => array('success' => $this->initialPage.': <strong>' . $data->email . '</strong> Dihapus'),
+        ));
+        return redirect()->route('admin.customers.index')->with($data);
     }
 }

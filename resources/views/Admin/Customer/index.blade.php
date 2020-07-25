@@ -55,8 +55,11 @@
                               <h3 class="card-title">Tambah {{$initialPage}} </h3>
                             </div>
                             @component('components.form.customer')
+                              @slot('id')
+                                
+                              @endslot
                               @slot('initialPage')
-                                  {{$initialPage}}
+                                {{$initialPage}}
                               @endslot
                               @slot('name')
                                  

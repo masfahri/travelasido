@@ -1,4 +1,4 @@
-<form role="form" id="quickFormx" method="POST" action="{{route('admin.customers.store')}}">
+<form role="form" id="quickFormx" method="POST" action="{{ $id == '' ? route('admin.customers.store') : route('admin.customers.update', ['id' => $id])}}">
    @csrf
    <div class="card-body">
       <div class="form-group">
