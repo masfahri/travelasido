@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () { return view('front.layouts.app');});
+Route::name('products.')->group(function () {
+    Route::get('/products', 'ProductsController@index')->name('index');
+});
+
+Route::name('api.')->group(function () {
+    Route::name('products.')->group(function () {
+        Route::get('/api/products/index', 'api\front\ProductsController@index')->name('index');
+        Route::post('/api/products/store', 'api\front\ProductsController@store')->name('store');
+    });
 });
 
 Auth::routes();
