@@ -92,6 +92,13 @@ Route::group(['middleware' => ['role:admin']], function () {
             });
         });
 
+        Route::name('settings.')->group(function () {
+            Route::get('/admin/settings/website', 'admin\settings\WebsiteController@index')->name('website');
+
+            Route::get('/admin/settings/selling', 'admin\settings\SellingOptionController@index')->name('selling');
+            Route::post('/admin/settings/selling/store', 'admin\settings\SellingOptionController@store')->name('selling.store');
+        });
+
         Route::get('/admin/role/index', 'admin\RoleController@index')->name('admin.role');
     
     });
