@@ -62,10 +62,24 @@
                 </a>
               </li>
               <li class="nav-item">
-               <a href="pages/forms/validation.html" class="nav-link">
+               <a href="#" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
                  <p>Seller</p>
                </a>
+               <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.sellers.index')}}" class="nav-link">
+                    <i class="far fa-dot-circle nav-icon"></i>
+                    <p>Khusus</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.sellers.index')}}" class="nav-link">
+                    <i class="far fa-dot-circle nav-icon"></i>
+                    <p>Umum</p>
+                  </a>
+                </li>
+              </ul>
              </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">

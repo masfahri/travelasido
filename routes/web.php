@@ -71,6 +71,26 @@ Route::group(['middleware' => ['role:admin']], function () {
                 Route::post('/admin/customer/khusus/destroy/{id}', 'admin\CustomerKhususController@destroy')->name('destroy');
             });
         });
+        
+        Route::name('sellers.')->group(function () {
+            Route::get('/admin/sellers/index', 'admin\SellerController@index')->name('index');
+            Route::get('/admin/sellers/create', 'admin\SellerController@create')->name('create');
+            Route::get('/admin/sellers/edit/{id}', 'admin\SellerController@edit')->name('edit');
+            
+            Route::post('/admin/sellers/update/{id}', 'admin\SellerController@update')->name('update');
+            Route::post('/admin/sellers/store', 'admin\SellerController@store')->name('store');
+            Route::post('/admin/sellers/destroy/{id}', 'admin\SellerController@destroy')->name('destroy');
+            
+            Route::name('khusus.')->group(function () {
+                Route::get('/admin/sellers/khusus/index', 'admin\SellerKhususController@index')->name('index');
+                Route::get('/admin/sellers/khusus/create', 'admin\SellerKhususController@create')->name('create');
+                Route::get('/admin/sellers/khusus/edit/{id}', 'admin\SellerKhususController@edit')->name('edit');
+                
+                Route::post('/admin/sellers/khusus/update/{id}', 'admin\SellerKhususController@update')->name('update');
+                Route::post('/admin/sellers/khusus/store', 'admin\SellerKhususController@store')->name('store');
+                Route::post('/admin/sellers/khusus/destroy/{id}', 'admin\SellerKhususController@destroy')->name('destroy');
+            });
+        });
 
         Route::get('/admin/role/index', 'admin\RoleController@index')->name('admin.role');
     

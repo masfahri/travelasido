@@ -37,11 +37,6 @@
     --}}
    <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet"/>
 	<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
-	<style>
-		.sticky-wrapper {
-			top: 0;
-		}
-	</style>
 
 </head>
 

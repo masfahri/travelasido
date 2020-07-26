@@ -5788,6 +5788,28 @@ label {
       padding-top: 40px; } }
   .footer-text a,
   .footer-text i {
-    color: #ffba00; }
+    color: #fff; }
 
 /*# sourceMappingURL=main.css.map */
+
+.owl-carousel .owl-nav .owl-prev,
+  .owl-carousel .owl-nav .owl-next,
+  .owl-carousel .owl-dot {
+    font-family: 'fontAwesome';
+
+}
+.owl-carousel .owl-nav .owl-prev:before{
+    content: "\f053";
+    margin-right:10px;
+}
+.owl-carousel .owl-nav .owl-next:after{
+    content: "\f054";
+    margin-right:10px;
+}
+.single-footer-widget  {
+  color: white;
+}
+
+.footer-text {
+  color: white;
+}
