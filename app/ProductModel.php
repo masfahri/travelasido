@@ -13,11 +13,17 @@ class ProductModel extends Model
         'description',
         'stock',
         'price',
-        'category_id'
+        'category_id',
+        'seller_id'
     ];
 
     public function Category()
     {
         return $this->belongsTo(CategoryModel::class, 'category_id');
+    }
+
+    public function FunctionName(Type $var = null)
+    {
+        $this->belongsTo(SellerModel::class, 'seller_id');
     }
 }

@@ -15,6 +15,7 @@ class CreateSellerModelsTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->after('id')->default(1);
             $table->string('email')->nullable()->unique();
             $table->string('shopname')->nullable()->unique();
             $table->string('name');
