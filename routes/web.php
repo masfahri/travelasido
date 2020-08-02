@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('front.layouts.app');});
+Route::get('/', function () {
+    return view('front.layouts.app');
+});
+
+Route::view('/{any}', 'front.layouts.app')->where('any', '.*');
+
 Route::name('products.')->group(function () {
     Route::get('/products', 'ProductsController@index')->name('index');
 });

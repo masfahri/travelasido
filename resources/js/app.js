@@ -1,47 +1,23 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { LayoutPlugin } from 'bootstrap-vue'
 
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+Vue.use(VueRouter)
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(LayoutPlugin)
 
-import VueAxios from 'vue-axios';
-import axios from 'axios';
 
-import App from './App.vue';
-Vue.use(VueAxios, axios);
 
-import DashboardComponent from './components/Dashboard.vue'
-import IndexComponent from './components/products/Index.vue';
-import CreateComponent from './components/products/Create.vue';
-import EditComponent from './components/products/Edit.vue';
+import routes from './router'
 
-const routes = [
-    {
-        name: 'dashboard',
-        path: '/',
-        component: DashboardComponent
-    },
-    {
-        name: 'products',
-        path: '/products',
-        component: IndexComponent
-    },
-    {
-        name: 'create',
-        path: '/products/create',
-        component: CreateComponent
-    },
-    {
-        name: 'edit',
-        path: '/products/edit/:id',
-        component: EditComponent
-    }
-];
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: routes
+Vue.component('navigation', require('./components/Navigation').default);
+const app = new Vue({
+    el: '#app',
+    router: new VueRouter(routes),
 });
-
-const app = new Vue(Vue.util.extend({ router }, App)).$mount('#app');
